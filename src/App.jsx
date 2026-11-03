@@ -1,7 +1,7 @@
 import { profile, skills, projects, education, internships, leadership } from "./data.js";
 import { useTheme, useReveal, useActiveSection, useSpotlight } from "./hooks.js";
 
-const SECTIONS = ["home", "about", "skills", "projects", "experience"];
+const SECTIONS = ["home", "about", "skills", "projects", "experience", "contact"];
 
 function Navbar({ theme, toggleTheme, active }) {
   return (
@@ -146,6 +146,24 @@ function Experience() {
   );
 }
 
+function Contact() {
+  return (
+    <section id="contact" className="contact-section">
+      <div className="container contact-inner">
+        <span className="section-kicker">05 / YOUR TURN</span>
+        <h2>Got a project?<br /><em>Let’s work together.</em></h2>
+        <p>I’m always happy to meet kind people making interesting things.</p>
+        <div className="contact-flashcards">
+          <a className="contact-card contact-email" href={`mailto:${profile.email}`}><span className="contact-card-label">DROP A NOTE</span><strong>{profile.email}</strong><span className="contact-card-action">OPEN EMAIL <b>↗</b></span></a>
+          <div className="contact-card contact-location"><span className="contact-card-label">CURRENTLY BASED</span><strong>{profile.location}</strong><span className="contact-card-action">PUNJAB · INDIA <b>✳</b></span></div>
+          {profile.socials.filter((item) => item.label !== "Email").map((item) => <a className="contact-card contact-social" href={item.url} key={item.label} target="_blank" rel="noreferrer"><span className="contact-card-label">FIND ME ON</span><strong>{item.label}</strong><span className="contact-card-action">VISIT PROFILE <b>↗</b></span></a>)}
+        </div>
+        <div className="contact-bottom"><span>DESIGNED &amp; BUILT BY AKSHITA · © {new Date().getFullYear()}</span><a href="#home">BACK TO TOP ↑</a></div>
+      </div>
+    </section>
+  );
+}
+
 export default function App() {
   const [theme, toggleTheme] = useTheme();
   const active = useActiveSection(SECTIONS);
@@ -153,7 +171,7 @@ export default function App() {
   useSpotlight();
   return <>
     <Navbar theme={theme} toggleTheme={toggleTheme} active={active} />
-    <main><Hero /><About /><Skills /><Projects /><Experience /></main>
+    <main><Hero /><About /><Skills /><Projects /><Experience /><Contact /></main>
     <footer className="footer"><div className="container"><span>ak.</span><span>Designed &amp; built by Akshita Kaushik · © {new Date().getFullYear()}</span><a href="#home">BACK TO TOP ↑</a></div></footer>
   </>;
 }
