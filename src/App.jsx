@@ -3,6 +3,58 @@ import { useTheme, useReveal, useActiveSection, useSpotlight } from "./hooks.js"
 
 const SECTIONS = ["home", "about", "skills", "projects", "experience", "contact"];
 
+function IntroWindow() {
+  const [phase, setPhase] = useState("open");
+
+  useEffect(() => {
+    if (phase === "closed") document.body.classList.remove("intro-lock");
+    else document.body.classList.add("intro-lock");
+    return () => document.body.classList.remove("intro-lock");
+  }, [phase]);
+
+  useEffect(() => {
+    if (phase !== "closing") return undefined;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const timer = window.setTimeout(() => setPhase("closed"), reduceMotion ? 0 : 650);
+    return () => window.clearTimeout(timer);
+  }, [phase]);
+
+  useEffect(() => {
+    if (phase !== "open") return undefined;
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") setPhase("closing");
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [phase]);
+
+  if (phase === "closed") return null;
+
+  return (
+    <div className={`intro-overlay ${phase}`} role="dialog" aria-modal="true" aria-labelledby="intro-title">
+      <div className="intro-window">
+        <div className="intro-copy">
+          <div className="intro-topline"><span>ak<span className="intro-dot">.</span></span></div>
+          <div className="intro-message">
+            <p className="intro-kicker">HELLO THERE !</p>
+            <h2 id="intro-title">Welcome to<br /><em>my little corner</em><br />of the internet.</h2>
+            <p className="intro-description">I’m Akshita Kaushik - a Computer Science Engineering Student at Chitkara University,Punjab, learning by building for the web.</p>
+            <button className="intro-enter" onClick={() => setPhase("closing")} autoFocus>
+              Enter portfolio <span>↗</span>
+            </button>
+          </div>
+          <div className="intro-foot"><span>JALANDHAR,PUNJAB,INDIA</span><span>SCROLL AROUND & SAY HI</span></div>
+        </div>
+        <div className="intro-photo-wrap">
+          <img src="/akshita-kaushik.jpeg" alt="Akshita Kaushik" className="intro-photo" />
+          <span className="intro-photo-label">AKSHITA KAUSHIK <i>✳</i></span>
+        </div>
+        <button className="intro-skip" onClick={() => setPhase("closing")} aria-label="Skip introduction">SKIP INTRO <span>×</span></button>
+      </div>
+    </div>
+  );
+}
+
 function Navbar({ theme, toggleTheme, active }) {
   return (
     <header className="nav">
@@ -170,6 +222,7 @@ export default function App() {
   useReveal();
   useSpotlight();
   return <>
+    <IntroWindow />
     <Navbar theme={theme} toggleTheme={toggleTheme} active={active} />
     <main><Hero /><About /><Skills /><Projects /><Experience /><Contact /></main>
     <footer className="footer"><div className="container"><span>ak.</span><span>Designed &amp; built by Akshita Kaushik · © {new Date().getFullYear()}</span><a href="#home">BACK TO TOP ↑</a></div></footer>
