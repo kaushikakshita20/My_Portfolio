@@ -21,3 +21,17 @@ export const skills = [
   { group: "Areas of interest", items: ["Artificial intelligence", "Cybersecurity"] },
 ];
 
+export const projects = [
+  {
+    title: "CryoGuard AI",
+    description:
+      "A React.js frontend project that uses APIs and an AI chatbot to deliver an interactive experience.",
+    tags: ["React.js", "APIs", "AI Chatbot"],
+  },
+  {
+    title: "CyberSecure",
+    description: "A cybersecurity-focused web project built with HTML, CSS, and JavaScript.",
+    tags: ["HTML", "CSS", "JavaScript", "Cybersecurity"],
+  },
+];
+

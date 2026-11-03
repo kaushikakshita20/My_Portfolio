@@ -1,7 +1,7 @@
-import { profile, skills } from "./data.js";
+import { profile, skills, projects } from "./data.js";
 import { useTheme, useReveal, useActiveSection, useSpotlight } from "./hooks.js";
 
-const SECTIONS = ["home", "about", "skills"];
+const SECTIONS = ["home", "about", "skills", "projects"];
 
 function Navbar({ theme, toggleTheme, active }) {
   return (
@@ -94,6 +94,29 @@ function Skills() {
   );
 }
 
+function Projects() {
+  return (
+    <section id="projects" className="section projects-section">
+      <div className="container">
+        <SectionTitle index="03" kicker="A FEW THINGS I’VE MADE">Small ideas, real projects</SectionTitle>
+        <div className="project-grid">
+          {projects.map((project, index) => (
+            <article className={`project-card reveal project-${index + 1}`} key={project.title}>
+              <div className={`project-art ${index === 0 ? "cryo-art" : "secure-art"}`} aria-hidden="true">
+                {index === 0 ? <><span className="cryo-orb">✳</span><span className="art-label">CRYOGUARD<br />AI</span><span className="art-satellite" /></> : <><span className="secure-window"><i /><i /><i /><b>secure<span>.</span></b><small>your digital world</small></span><span className="secure-lock">⌑</span></>}
+                <span className="art-number">0{index + 1}</span>
+              </div>
+              <div className="project-info"><div><span className="project-type">{index === 0 ? "ARTIFICIAL INTELLIGENCE" : "WEB · CYBERSECURITY"}</span><h3>{project.title}</h3></div><span className="project-mark">↗</span></div>
+              <p>{project.description}</p>
+              <div className="chips small">{project.tags.map((tag) => <span className="chip" key={tag}>{tag}</span>)}</div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function App() {
   const [theme, toggleTheme] = useTheme();
   const active = useActiveSection(SECTIONS);
@@ -101,7 +124,7 @@ export default function App() {
   useSpotlight();
   return <>
     <Navbar theme={theme} toggleTheme={toggleTheme} active={active} />
-    <main><Hero /><About /><Skills /></main>
+    <main><Hero /><About /><Skills /><Projects /></main>
     <footer className="footer"><div className="container"><span>ak.</span><span>Designed &amp; built by Akshita Kaushik · © {new Date().getFullYear()}</span><a href="#home">BACK TO TOP ↑</a></div></footer>
   </>;
 }
