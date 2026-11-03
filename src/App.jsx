@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { profile, skills, projects, education, internships, leadership } from "./data.js";
 import { useTheme, useReveal, useActiveSection, useSpotlight } from "./hooks.js";
 
