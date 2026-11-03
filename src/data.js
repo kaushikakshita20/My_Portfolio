@@ -35,3 +35,50 @@ export const projects = [
   },
 ];
 
+export const education = [
+  {
+    period: "2025 – 2029",
+    title: "B.E. Computer Science and Engineering (Core)",
+    place: "Chitkara University",
+    details: "Currently pursuing an undergraduate degree in computer science.",
+  },
+  {
+    period: "2025",
+    title: "Class 12",
+    place: "MGN Public School, Urban Estate-2, Jalandhar",
+    details: "Completed senior secondary education.",
+  },
+  {
+    period: "2023",
+    title: "Class 10 · ICSE",
+    place: "St. Joseph's Convent School, Jalandhar",
+    details: "Completed secondary education.",
+  },
+];
+
+export const internships = [
+  {
+    period: "Ongoing",
+    title: "Freelance",
+    place: "Independent",
+    details: "Independent freelance work.",
+  },
+];
+
+export const leadership = [
+  {
+    period: "2025",
+    title: "Organizing Team Member · iOS Department Centre",
+    place: "Chitkara University",
+  },
+  {
+    period: "2025",
+    title: "Supercharge '25 by Apple",
+    place: "Held event responsibility",
+  },
+  {
+    period: "2022 – 2023",
+    title: "Vice Head Girl",
+    place: "School leadership",
+  },
+];

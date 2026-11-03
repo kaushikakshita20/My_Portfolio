@@ -1,7 +1,7 @@
-import { profile, skills, projects } from "./data.js";
+import { profile, skills, projects, education, internships, leadership } from "./data.js";
 import { useTheme, useReveal, useActiveSection, useSpotlight } from "./hooks.js";
 
-const SECTIONS = ["home", "about", "skills", "projects"];
+const SECTIONS = ["home", "about", "skills", "projects", "experience"];
 
 function Navbar({ theme, toggleTheme, active }) {
   return (
@@ -117,6 +117,35 @@ function Projects() {
   );
 }
 
+function Experience() {
+  return (
+    <section id="experience" className="section journey-section">
+      <div className="container journey-inner">
+        <SectionTitle index="04" kicker="THE JOURNEY">Where I’ve been learning</SectionTitle>
+        <div className="journey-columns">
+          <div className="journey-timeline">
+            <h3 className="timeline-label">Education</h3>
+            {education.map((item) => <article className="journey-event reveal" key={item.title}>
+              <span className="journey-dot" aria-hidden="true" />
+              <span className="journey-date">{item.period}</span>
+              <h4>{item.title}</h4><p className="journey-place">{item.place}</p><p className="journey-detail">{item.details}</p>
+            </article>)}
+          </div>
+          <div className="journey-timeline journey-roles">
+            <h3 className="timeline-label">Experience &amp; involvement</h3>
+            {internships.map((item) => <article className="journey-event reveal" key={item.title}>
+              <span className="journey-dot" aria-hidden="true" /><span className="journey-date">{item.period}</span><h4>{item.title}</h4><p className="journey-place">{item.place}</p><p className="journey-detail">{item.details}</p>
+            </article>)}
+            {leadership.map((item) => <article className="journey-event reveal" key={item.title}>
+              <span className="journey-dot" aria-hidden="true" /><span className="journey-date">{item.period}</span><h4>{item.title}</h4><p className="journey-place">{item.place}</p>
+            </article>)}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function App() {
   const [theme, toggleTheme] = useTheme();
   const active = useActiveSection(SECTIONS);
@@ -124,7 +153,7 @@ export default function App() {
   useSpotlight();
   return <>
     <Navbar theme={theme} toggleTheme={toggleTheme} active={active} />
-    <main><Hero /><About /><Skills /><Projects /></main>
+    <main><Hero /><About /><Skills /><Projects /><Experience /></main>
     <footer className="footer"><div className="container"><span>ak.</span><span>Designed &amp; built by Akshita Kaushik · © {new Date().getFullYear()}</span><a href="#home">BACK TO TOP ↑</a></div></footer>
   </>;
 }
