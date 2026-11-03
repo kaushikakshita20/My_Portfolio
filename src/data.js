@@ -32,6 +32,7 @@ export const projects = [
     title: "CyberSecure",
     description: "A cybersecurity-focused web project built with HTML, CSS, and JavaScript.",
     tags: ["HTML", "CSS", "JavaScript", "Cybersecurity"],
+    url: "https://kaushikakshita20.github.io/CyberSecure-/",
   },
 ];
 

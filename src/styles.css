@@ -171,3 +171,5 @@ h1,h2,h3,p,figure { margin: 0; }
   .intro-copy { grid-row:2;padding:20px 22px 15px; }.intro-message { padding:17px 0; }.intro-message h2 { margin-top:10px;font-size:clamp(2.35rem,10vw,3.4rem); }.intro-description { margin-top:11px;font-size:.78rem; }.intro-enter { margin-top:17px;padding:12px 15px 12px 18px; }.intro-foot { font-size:.44rem; }.intro-topline { font-size:.5rem; }.intro-skip { top:12px;right:12px; }
 }
 @media (prefers-reduced-motion:reduce) { .intro-overlay,.intro-window { animation-duration:.01ms!important; }.intro-overlay.closing,.intro-overlay.closing .intro-window { transition-duration:.01ms!important; } }
+
+.project-info h3 a { color:inherit;text-decoration:none; }.project-info h3 a:hover { color:var(--violet); }

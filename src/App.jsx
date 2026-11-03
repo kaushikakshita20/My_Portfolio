@@ -159,7 +159,7 @@ function Projects() {
                 {index === 0 ? <><span className="cryo-orb">✳</span><span className="art-label">CRYOGUARD<br />AI</span><span className="art-satellite" /></> : <><span className="secure-window"><i /><i /><i /><b>secure<span>.</span></b><small>your digital world</small></span><span className="secure-lock">⌑</span></>}
                 <span className="art-number">0{index + 1}</span>
               </div>
-              <div className="project-info"><div><span className="project-type">{index === 0 ? "ARTIFICIAL INTELLIGENCE" : "WEB · CYBERSECURITY"}</span><h3>{project.title}</h3></div><span className="project-mark">↗</span></div>
+              <div className="project-info"><div><span className="project-type">{index === 0 ? "ARTIFICIAL INTELLIGENCE" : "WEB · CYBERSECURITY"}</span><h3>{project.url ? <a href={project.url} target="_blank" rel="noreferrer">{project.title}</a> : project.title}</h3></div>{project.url ? <a className="project-mark" href={project.url} target="_blank" rel="noreferrer" aria-label={`Open ${project.title}`} >↗</a> : <span className="project-mark">↗</span>}</div>
               <p>{project.description}</p>
               <div className="chips small">{project.tags.map((tag) => <span className="chip" key={tag}>{tag}</span>)}</div>
             </article>
