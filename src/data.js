@@ -45,7 +45,7 @@ export const education = [
   },
   {
     period: "2025",
-    title: "Class 12",
+    title: "Class 12 · CBSE",
     place: "MGN Public School, Urban Estate-2, Jalandhar",
     details: "Completed senior secondary education.",
   },
